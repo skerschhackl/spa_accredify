@@ -17,9 +17,11 @@ describe('The Router', () => {
   it('mounts properly', () => {
     const nav = mountNavBar()
     expect(nav.find('img'))
+    expect(nav.findAll('svg')).toHaveLength(5)
+    
   })
 
-  test('click the links', async () => {
+  test('click home link', async () => {
     const push = vi.spyOn(router, 'push')
 
     await mountNavBar().find('a').trigger('click')

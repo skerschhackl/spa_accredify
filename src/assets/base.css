@@ -27,9 +27,15 @@
   --color-nav-bar-icon: var(--neutral-n05);
   --color-nav-bar-icon-disabled: var(--neutral-n30);
 
+  --color-background-user-initials: var(--primary-p50);
+  --color-user-initials: var(--neutral-n05);
+
   --width-nav-bar: 60px;
   --border-radius-small: 6px;
   --border-radius-large: 15px;
+
+  --font-size-small: 0.875rem;
+
 }
 
 

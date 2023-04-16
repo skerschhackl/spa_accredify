@@ -37,14 +37,17 @@
   margin: 8px 0 28px;
 }
 
-.page {
+.page-wrapper {
   background-color: var(--color-background-page);
   min-height: 100vh;
   min-width: calc(100% - var(--width-nav-bar));
   border-top-left-radius: var(--border-radius-large);
+}
+.page-content {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 48px;
 }
 
 a {
