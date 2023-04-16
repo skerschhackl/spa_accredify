@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    <UserLogin />
+  <UserLogin />
 </template>

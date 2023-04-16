@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './HelloWorld.vue'
+  import { RouterLink } from 'vue-router';
+  import HelloWorld from './HelloWorld.vue';
 </script>
+
 <template>
   <div class="wrapper">
     <HelloWorld msg="Pick your User" />
@@ -25,6 +26,10 @@ nav a {
   display: inline-block;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
+}
+
+nav a:hover {
+  color: var(--color-border)
 }
 
 nav a:first-of-type {

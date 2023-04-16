@@ -3,7 +3,7 @@
   --primary-p50: #493DF5;
   --primary-p70: #2B22B5;
 
-  --primary-n05: #ffffff;
+  --neutral-n05: #ffffff;
   --neutral-n20: #E8E9EB;
   --neutral-n30: #D0D2D6;
   --neutral-n60: #5B6270;
@@ -14,7 +14,7 @@
 /* semantic color variables for this project */
 :root {
   --color-background-nav: var(--neutral-n80);
-  --color-background-page: var(--primary-n05);
+  --color-background-page: var(--neutral-n05);
   --color-border: var(--neutral-n30);
 
   --color-heading: var(--neutral-n95);
@@ -24,7 +24,8 @@
   --color-link: var(--neutral-n95);
   --color-link-hover: var(--neutral-n30);
 
-  --section-gap: 160px;
+  --color-nav-bar-icon: var(--neutral-n05);
+  --color-nav-bar-icon-disabled: var(--neutral-n30);
 
   --width-nav-bar: 60px;
   --border-radius-small: 6px;
