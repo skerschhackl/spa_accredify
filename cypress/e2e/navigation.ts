@@ -1,5 +1,3 @@
-// https://docs.cypress.io/api/introduction/api.html
-
 describe('when a user opens the app', () => {
   it('visits the app root url and checks nav bar is present', () => {
     cy.visit('/')
