@@ -45,9 +45,7 @@
 }
 .page-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 48px;
+  margin: 48px 144px; 
 }
 
 a {

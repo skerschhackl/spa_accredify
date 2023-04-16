@@ -1,21 +1,12 @@
 <script setup lang="ts">
   import IconBell from './icons/IconBell.vue';
   import IconChevron from './icons/IconChevron.vue';
-  import { defineComponent } from 'vue'
+  import userUtils from '../utils/UserUtils.js';
   
   defineProps<{
     firstName: string,
     lastName: string
   }>()
-
-
-  const getUserName = (firstName: string, lastName: string) => {
-    return firstName + ' ' + lastName;
-  }
-
-  const getInitials = (firstName: string, lastName: string) => {
-    return firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
-  }
 
 </script>
 
@@ -24,10 +15,10 @@
     <div class="utility-nav-bar--content">
       <IconBell class="utility-nav-bar--bell-icon" />
       <div class="utility-nav-bar--initials">
-        {{ getInitials(firstName, lastName) }}
+        {{ userUtils.getInitials(firstName, lastName) }}
       </div>
       <div class="utility-nav-bar--username">
-        {{ getUserName(firstName, lastName) }}
+        {{ userUtils.getUserName(firstName, lastName) }}
       </div>
       <IconChevron class="utility-nav-bar--chevron" />
     </div>
