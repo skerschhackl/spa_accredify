@@ -44,7 +44,6 @@
   border-top-left-radius: var(--border-radius-large);
 }
 .page-content {
-  display: flex;
   margin: 48px 144px; 
 }
 

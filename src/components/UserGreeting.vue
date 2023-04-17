@@ -17,7 +17,7 @@
 <style scoped>
   .greeting--headline {
     /* font-family: 'Pulp Display', sans-serif; */
-    font-size: var(--font-size-headline);
+    font-size: var(--font-size-h2);
     font-weight: var(--font-weight-bold);
     line-height: 44px;
   }
