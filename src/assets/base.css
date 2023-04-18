@@ -29,6 +29,7 @@
 
   --color-background-user-initials: var(--primary-p50);
   --color-user-initials: var(--neutral-n05);
+  --color-donut-text: var(--primary-p70);
 
   --width-nav-bar: 60px;
   --border-radius-small: 6px;
