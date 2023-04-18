@@ -15,6 +15,9 @@
 </template>
 
 <style scoped>
+  .greeting {
+    margin-bottom: 56px;
+  }
   .greeting--headline {
     /* font-family: 'Pulp Display', sans-serif; */
     font-size: var(--font-size-h2);

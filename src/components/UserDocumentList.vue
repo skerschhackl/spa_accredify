@@ -5,7 +5,11 @@
 
 <template>
   <div class="document">
-    <h4>Recent Documents</h4>
+    <div class="document--header">
+      <h4>Recent Documents</h4>
+      <div class="document--view-all">View All Documents</div>
+    </div>
+    
     <div class="document-list">
       <div class="document-list--row document-list--header">
         <div class="document-list--header document-list--header--document-name">Document Name</div>
@@ -22,6 +26,19 @@
 </template>
 
 <style scoped>
+  .document {
+    width: 100%;
+  }
+  .document--header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .document--view-all {
+    margin-left: auto;
+    color: var(--color-background-user-initials);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+  }
   h4 {
     font-size: var(--font-size-h4);
     font-weight: var(--font-weight-bold);
