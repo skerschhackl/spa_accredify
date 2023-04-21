@@ -1,15 +1,24 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, test, expect, vi } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import UserGreeting from '../UserGreeting.vue'
-import UserUtils from '@/utils/UserUtils'
+import UserGreeting from '@/components/UserGreeting.vue';
 
 describe('UserGreeting', () => {
-  it('shows the user initials next to the username', () => {
-    const push = vi.spyOn(UserUtils, 'getUserName').mockReturnValue('Mickey Mouse')
+  
+  const wrapper = mount(UserGreeting, { props: { name: 'Mickey Mouse', isPersonal: true } });
 
-    const wrapper = mount(UserGreeting)
-
-    expect(wrapper.find('h2').text()).toContain('Hi, Mickey Mouse 👋')
+  it('renders properly', () => {
+    expect(wrapper.find('h2').text()).toContain('Hi, Mickey Mouse 👋');
   })
+  
+  test ('it renders a "Manage your documents." message if the user is personal', () => {
+    expect(wrapper.find('div.greeting--sub-headline').text()).toBe('Manage your documents.');
+  })
+
+  test ('it renders a "Manage your documents issued by SMU Academy or track your career goal." message if the user is managed',async  () => {
+    await wrapper.setProps({ isPersonal: false });
+
+    expect(wrapper.find('div.greeting--sub-headline').text()).toBe('Manage your documents issued by SMU Academy or track your career goal.');
+  })
+  
 })

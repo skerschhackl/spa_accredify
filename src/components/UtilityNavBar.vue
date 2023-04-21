@@ -4,21 +4,20 @@
   import userUtils from '../utils/UserUtils.js';
   
   defineProps<{
-    firstName: string,
-    lastName: string
+    name: any
   }>()
 
 </script>
 
 <template>
-  <div class="utility-nav-bar">
+  <div v-if="name" class="utility-nav-bar">
     <div class="utility-nav-bar--content">
       <IconBell class="utility-nav-bar--bell-icon" />
       <div class="utility-nav-bar--initials">
-        {{ userUtils.getInitials(firstName, lastName) }}
+        {{ userUtils.getInitials(name) }}
       </div>
       <div class="utility-nav-bar--username">
-        {{ userUtils.getUserName(firstName, lastName) }}
+        {{ name }}
       </div>
       <IconChevron class="utility-nav-bar--chevron" />
     </div>
@@ -44,8 +43,13 @@
     background-color: var(--color-background-user-initials);
     border-radius: 50%;
     color: var(--color-user-initials);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-tiny);
     padding: 2px;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    align-content: center;
   }
   .utility-nav-bar--username {
     margin: 0 8px;

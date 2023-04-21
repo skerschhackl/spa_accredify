@@ -1,43 +1,21 @@
 <script setup lang="ts">
-  import { ref, watchEffect } from 'vue';
-  import type User from '@/types/User';
-  import { getJSON } from '../utils/requestUtils.js';
-  import { urlUserData } from './constants/urlConstants';
-
-
-  const person = {} as User
-  const user = ref(person);
-  const error = ref('');
-
-  watchEffect(async (newUser) => {
-    if (newUser.length > 0) {
-      try {
-        const response = await getJSON(urlUserData);
-        user.value = response.data; 
-      } catch (e) {
-        error.value = 'We are sorry - there was an error loading your user data.'
-      }
-    } 
-  });
-
+  defineProps<{
+    name: string,
+    isPersonal: boolean
+  }>()
 </script>
 
 <template>
   <div class="greeting">
-    <span v-if="error">
-      {{ error }}
-    </span>
-    <span v-else>
       <h2 class="greeting--headline">
-        Hi, {{ user?.name }} 👋
+        Hi, {{ name }} 👋
       </h2>
-      <div v-if="user?.current_organisation?.is_personal === true" class="greeting--sub-headline">
+      <div v-if="isPersonal" class="greeting--sub-headline">
         Manage your documents.
       </div>
       <div v-else class="greeting--sub-headline">
         Manage your documents issued by SMU Academy or track your career goal.
       </div>
-    </span>
   </div>
 </template>
 
