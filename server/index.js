@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import homepageRouter from "./homepageRouter.js";
 import assetsRouter from "./assetsRouter.js";
+import UserData from "./exampleResponse/UserData.json" assert {type: 'json'};
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(path.resolve(), "public");
@@ -11,6 +12,10 @@ const app = express();
 
 app.get("/api/v1/hello", (_req, res) => {
   res.json({ message: "Hello, world!" });
+});
+
+app.get("/api/v1/user", (_req, res) => {
+  res.json(UserData);
 });
 
 if (process.env.NODE_ENV === "production") {
