@@ -1,3 +1,3 @@
 export default interface Identifyable {
-  id: Number
+  id: number
 };
