@@ -1,5 +1,16 @@
 <script setup lang="ts">
-  const foreground = '#E8E9EB';
+  import type CareerGoal from '@/types/CareerGoal';
+  const colorDonutForeground = '#E8E9EB';
+  const colorDonutSection = '#493DF5';
+
+  defineProps<{
+    latestCareerGoal: CareerGoal
+  }>()
+
+  const getProgress = (goal: { progress: number; }) => {
+    return goal?.progress || 0
+  }
+
 </script>
 
 <template>
@@ -9,14 +20,14 @@
       <div class="career-goal--header">Your Progress</div>
       <div class="career-goal--donut">
         <vc-donut 
-          :foreground="foreground"
-          :sections="[{ value: 35, color: '#493DF5' }]"
+          :foreground="colorDonutForeground"
+          :sections="[{ value:  getProgress(latestCareerGoal), color: colorDonutSection }]"
           :size="180"
           :thickness="14"
-          ><div class="career-goal--donut-text">35%</div></vc-donut>
+          ><div class="career-goal--donut-text">{{ getProgress(latestCareerGoal) }}%</div></vc-donut>
       </div>
       <div>I want to become a</div>
-      <h4>Tax Manager</h4>
+      <h4>{{ latestCareerGoal?.name }}</h4>
 
       <div class="career-goal--link">View Insights</div>
     </div>

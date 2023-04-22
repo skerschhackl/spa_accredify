@@ -4,7 +4,7 @@
   import userUtils from '../utils/UserUtils.js';
   
   defineProps<{
-    name: any
+    name: string
   }>()
 
 </script>

@@ -1,6 +1,17 @@
 <script setup lang="ts">
   import IconFile from './icons/IconFile.vue';
   import IconKebab from './icons/IconKebab.vue';
+  import type Document from '@/types/Document';
+  import { format } from 'date-fns';
+
+  defineProps<{
+    documents: Document
+  }>()
+
+  const formatDate = (date: string | number | Date) => {
+    return (date) ? format(new Date(date),'dd MMM yyyy') : '-' 
+  }
+
 </script>
 
 <template>
@@ -15,10 +26,10 @@
         <div class="document-list--header document-list--header--document-name">Document Name</div>
         <div class="document-list--header document-list--header--date">Received On</div>
       </div>
-      <div class="document-list--row">
+      <div v-for="d in documents" :key="d.id" class="document-list--row">
         <IconFile class="document-list--file-icon" />
-        <div class="document-list--document-name">Degree in Info Sys</div>
-        <div class="document-list--date">29 Jun 2021</div>
+        <div class="document-list--document-name">{{ d.document_name }}</div>
+        <div class="document-list--date">{{ formatDate(d.received_on) }}</div>
         <IconKebab class="document-list--kebab-icon" />
       </div>
     </div>
