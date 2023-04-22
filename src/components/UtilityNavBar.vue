@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import IconBell from './icons/IconBell.vue';
   import IconChevron from './icons/IconChevron.vue';
-  import userUtils from '../utils/UserUtils.js';
+  import { getInitials } from '@/utils/userUtils.js';
   
   defineProps<{
     name: string
@@ -14,7 +14,7 @@
     <div class="utility-nav-bar--content">
       <IconBell class="utility-nav-bar--bell-icon" />
       <div class="utility-nav-bar--initials">
-        {{ userUtils.getInitials(name) }}
+        {{ getInitials(name) }}
       </div>
       <div class="utility-nav-bar--username">
         {{ name }}

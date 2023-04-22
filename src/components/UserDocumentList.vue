@@ -2,16 +2,11 @@
   import IconFile from './icons/IconFile.vue';
   import IconKebab from './icons/IconKebab.vue';
   import type Document from '@/types/Document';
-  import { format } from 'date-fns';
+  import { formatDate } from '@/utils/dateUtils';
 
   defineProps<{
     documents: Document
   }>()
-
-  const formatDate = (date: string | number | Date) => {
-    return (date) ? format(new Date(date),'dd MMM yyyy') : '-' 
-  }
-
 </script>
 
 <template>
