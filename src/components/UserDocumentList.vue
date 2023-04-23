@@ -1,16 +1,31 @@
 <script setup lang="ts">
+  import { watchEffect, ref } from 'vue';
+  
   import IconFile from './icons/IconFile.vue';
   import IconKebab from './icons/IconKebab.vue';
-  import type Document from '@/types/Document';
+  import Document from '@/types/Document';
+  import { urlDocumentData } from '@/components/constants/urlConstants';
+  import { getJSON } from '@/utils/requestUtils';
   import { formatDate } from '@/utils/dateUtils';
 
-  defineProps<{
-    documents: Document
-  }>()
+  const documents = ref(new Document);
+
+  const error = ref('');
+
+  watchEffect(async (newDoc) => {
+    if (newDoc.length > 0) {
+      try {
+        const response = await getJSON(urlDocumentData);
+        documents.value.populateFromJSON(response);
+      } catch (e) {
+        error.value = 'We are sorry - there was an error loading your document data.'
+      }
+    }
+  });
 </script>
 
 <template>
-  <div class="document">
+  <div class="document">{{ documents.data }}
     <div class="document--header">
       <h4>Recent Documents</h4>
       <div class="document--view-all">View All Documents</div>
@@ -21,7 +36,7 @@
         <div class="document-list--header document-list--header--document-name">Document Name</div>
         <div class="document-list--header document-list--header--date">Received On</div>
       </div>
-      <div v-for="d in documents" :key="d.id" class="document-list--row">
+      <div v-if="documents.data" v-for="d in documents.data.data" :key="d.id" class="document-list--row">
         <IconFile class="document-list--file-icon" />
         <div class="document-list--document-name">{{ d.document_name }}</div>
         <div class="document-list--date">{{ formatDate(d.received_on) }}</div>

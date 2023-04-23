@@ -4,7 +4,7 @@
   import { getInitials } from '@/utils/userUtils.js';
   
   defineProps<{
-    name: string
+    name: string | undefined
   }>()
 
 </script>

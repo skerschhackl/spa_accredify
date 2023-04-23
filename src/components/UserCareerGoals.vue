@@ -1,15 +1,30 @@
 <script setup lang="ts">
-  import type CareerGoal from '@/types/CareerGoal';
+  import { watchEffect, ref, computed } from 'vue';
+
+  import CareerGoal from '@/types/CareerGoal';
+  import { urlCareerGoalData } from '@/components/constants/urlConstants';
+  import { getJSON } from '@/utils/requestUtils';
+
   const colorDonutForeground = '#E8E9EB';
   const colorDonutSection = '#493DF5';
 
-  defineProps<{
-    latestCareerGoal: CareerGoal
-  }>()
+  const latestCareerGoal = ref(new CareerGoal);
+  
+  watchEffect(async (newGoal) => {
+    if (newGoal.length > 0) {
+      try {
+        const response = await getJSON(urlCareerGoalData);
+        const maxId = Math.max.apply(null, response.data.map((item: { id: any; }) => item.id));
+        const latest = response.data.find( (item: { id: number; }) => {return item.id === maxId})
+        latestCareerGoal.value.populateFromJSON(latest);
+      } catch (e) {
+        console.log(e)
+        // error.value = 'We are sorry - there was an error loading your career goal data.'
+      }
+    }
+  });
 
-  const getProgress = (goal: { progress: number; }) => {
-    return goal?.progress || 0
-  }
+  const getProgress = computed(() => latestCareerGoal.value.data.progress || 0)
 
 </script>
 
@@ -21,13 +36,13 @@
       <div class="career-goal--donut">
         <vc-donut 
           :foreground="colorDonutForeground"
-          :sections="[{ value:  getProgress(latestCareerGoal), color: colorDonutSection }]"
+          :sections="[{ value: getProgress, color: colorDonutSection }]"
           :size="180"
           :thickness="14"
-          ><div class="career-goal--donut-text">{{ getProgress(latestCareerGoal) }}%</div></vc-donut>
+          ><div class="career-goal--donut-text">{{ getProgress }}%</div></vc-donut>
       </div>
       <div>I want to become a</div>
-      <h4>{{ latestCareerGoal?.name }}</h4>
+      <h4>{{ latestCareerGoal.data.name }}</h4>
 
       <div class="career-goal--link">View Insights</div>
     </div>
