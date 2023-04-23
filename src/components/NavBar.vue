@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { RouterLink } from 'vue-router';
   import IconHome from './icons/IconHome.vue';
   import IconFile from './icons/IconFile.vue';
   import IconBulb from './icons/IconBulb.vue';
@@ -10,11 +9,9 @@
 <template>
   <nav class="nav-bar">
     <div class="nav-bar nav-bar--icon">
-      <RouterLink to="/"><img class="nav-bar--logo" alt="SPA logo" src="@/assets/logo.svg"/></RouterLink>
+      <img class="nav-bar--logo" alt="SPA logo" src="@/assets/logo.svg"/>
     </div>
-    <div class="nav-bar nav-bar--icon nav-bar--home">
-      <RouterLink to="/"><IconHome /></RouterLink>
-    </div>
+    <div class="nav-bar nav-bar--icon nav-bar--home"><IconHome /></div>
     <div class="nav-bar nav-bar--icon nav-bar--documents"><IconFile /></div>
     <div class="nav-bar nav-bar--icon nav-bar--news"><IconBulb /></div>
     <div class="nav-bar nav-bar--icon nav-bar--security"><IconShield /></div>

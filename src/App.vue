@@ -8,7 +8,7 @@
   import User from '@/types/User';
   import { getJSON } from '@/utils/requestUtils.js';
   import { urlUserData } from '@/components/constants/urlConstants';
-  import UserPersonalView from '@/views/UserPersonalView.vue';
+  import UserView from '@/views/UserView.vue';
 
   const person = ref(new User);
   const error = ref(false);
@@ -44,7 +44,7 @@
         <span v-if="error">
           <Notification :msg="'We are sorry - there was an error loading your user data.'"/>
         </span>
-        <UserPersonalView 
+        <UserView 
           :name="person.data?.name" 
           :isPersonal="isPersonalAccount" />
       </div>

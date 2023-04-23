@@ -1,33 +1,12 @@
-import { describe, it, expect, test, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
 import { mount } from '@vue/test-utils';
 import NavBar from '../NavBar.vue';
-import router from '@/router'
 
-function mountNavBar() {
-  const wrapper = mount(NavBar, {
-    global: {
-      plugins: [router]
-    }
-  })
-  return wrapper
-}
-
-describe('The Router', () => {
+describe('NavBar', () => {
   it('mounts properly', () => {
-    const nav = mountNavBar()
+    const nav = mount(NavBar);
     expect(nav.find('img'))
     expect(nav.findAll('svg')).toHaveLength(5)
-    
-  })
-
-  test('click home link', async () => {
-    const push = vi.spyOn(router, 'push')
-
-    await mountNavBar().find('a').trigger('click')
-
-    expect(push).toHaveBeenCalledOnce()
-    expect(push).toHaveBeenCalledWith('/')
-
   })
 })
