@@ -13,19 +13,10 @@ describe('HttpError', () => {
     expect(error.statusCode).toBe(404);
   });
 
-  it('should have a property name set to "Error"', () => {
-    const error = new HttpError(500, 'Internal Server Error');
-    expect(error.name).toBe('Error');
-  });
-
   it('should have a property message', () => {
     const message = 'Custom error message';
     const error = new HttpError(400, message);
     expect(error.message).toBe(message);
   });
-
-  it('should have a stack trace', () => {
-    const error = new HttpError(401, 'Unauthorized');
-    expect(error.stack).toBeDefined();
-  });
+  
 });

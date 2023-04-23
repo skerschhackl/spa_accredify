@@ -1,39 +1,73 @@
-import type Identifyable from "./Identifyable"
+import type { JTDDataType } from "ajv/dist/types/jtd-schema";
+import { Validateable } from "./validator/Validateable";
 
-export default interface Document extends Identifyable {
-  status: string;
-  document_name: string;
-  issuer_name: string;
-  issuer_logo_url: string;
-  recipient_name: string;
-  received_on: string | null;
-  expire_at: string | null;
-  created_at: string;
-  updated_at: string;
-  archived_at: string | null;
-  deleted_at: string | null;
-};
-
-export default interface DocumentResponse {
-  data: Document[];
-  links: {
-    first: string;
-    last: string;
-    prev: string | null;
-    next: string | null;
-  };
-  meta: {
-    current_page: number;
-    from: number;
-    last_page: number;
+const schema = {
+  type: 'object',
+  properties: {
+    data: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'integer' },
+          status: { type: 'string' },
+          document_name: { type: 'string' },
+          issuer_name: { type: 'string' },
+          issuer_logo_url: { type: 'string' },
+          recipient_name: { type: 'string' },
+          received_on: { type: ['string', 'null'] },
+          expire_at: { type: ['string', 'null'] },
+          created_at: { type: 'string' },
+          updated_at: { type: 'string' },
+          archived_at: { type: ['string', 'null'] },
+          deleted_at: { type: ['string', 'null'] }
+        },
+      },
+    },
     links: {
-      url: string | null;
-      label: string;
-      active: boolean;
-    }[];
-    path: string;
-    per_page: number;
-    to: number;
-    total: number;
-  };
-};
+      type: 'object',
+      properties: {
+        first: { type: 'string' },
+        last: { type: 'string' },
+        prev: { type: ['string', 'null']  },
+        next: { type: ['string', 'null']  }
+      }
+    },
+    meta: {
+      type: 'object',
+      properties: {
+        current_page: { type: 'integer' },
+        from: { type: 'integer' },
+        last_page:{ type: 'integer' },
+        links: {
+          type: 'array',
+          items: {
+            "type": "object",
+            "properties": {
+              url: { type: ['string', 'null'] },
+              label: { type: 'string' },
+              active: { type: 'boolean' }
+            }
+          }
+        },
+        path: { type: 'string' },
+        per_page: { type: 'integer' },
+        to: { type: 'integer' },
+        total: { type: 'integer' }
+      }
+    }
+  }
+} as const
+
+export default class Document extends Validateable {  
+  data: JTDDataType<typeof schema> | undefined;
+  constructor() {
+    super(schema)
+  }
+
+  populateFromJSON(param: any): void {
+    this.validator.validate(param);
+    this.data = param;
+  }
+}
+

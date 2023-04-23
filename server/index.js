@@ -19,9 +19,11 @@ app.get("/api/v1/hello", (_req, res) => {
 app.get("/api/v1/user", (_req, res) => {
   res.json(UserData);
 });
+
 app.get("/api/v1/document", (_req, res) => {
   res.json(DocumentData);
 });
+
 app.get("/api/v1/career", (_req, res) => {
   res.json(CareerGoalData);
 });
