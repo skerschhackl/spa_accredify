@@ -8,7 +8,7 @@
   import User from '@/types/User';
   import { getJSON } from '@/utils/requestUtils.js';
   import { urlUserData } from '@/components/constants/urlConstants';
-  import UserView from '@/views/UserView.vue';
+  import UserView from '@/views/user/UserView.vue';
 
   const person = ref(new User);
   const error = ref(false);

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import IconHome from './icons/IconHome.vue';
-  import IconFile from './icons/IconFile.vue';
-  import IconBulb from './icons/IconBulb.vue';
-  import IconShield from './icons/IconShield.vue';
-  import IconCog from './icons/IconCog.vue';
+  import IconHome from '@/components/icons/IconHome.vue';
+  import IconFile from '@/components/icons/IconFile.vue';
+  import IconBulb from '@/components/icons/IconBulb.vue';
+  import IconShield from '@/components/icons/IconShield.vue';
+  import IconCog from '@/components/icons/IconCog.vue';
 </script>
 
 <template>

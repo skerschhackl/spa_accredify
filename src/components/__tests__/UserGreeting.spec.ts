@@ -1,7 +1,7 @@
 import { describe, it, test, expect, vi } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import UserGreeting from '@/components/UserGreeting.vue';
+import UserGreeting from '@/views/user/UserGreeting.vue';
 
 describe('UserGreeting', () => {
   

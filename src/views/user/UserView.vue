@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import UserGreeting from '@/components/UserGreeting.vue';
-  import UserDocumentList from '@/components/UserDocumentList.vue';
-  import UserCareerGoals from '@/components/UserCareerGoals.vue';
+  import UserGreeting from '@/views/user/UserGreeting.vue';
+  import UserDocumentList from '@/views/user/UserDocumentList.vue';
+  import UserCareerGoals from '@/views/user/UserCareerGoals.vue';
   
   export interface Props {
     name?: string | undefined

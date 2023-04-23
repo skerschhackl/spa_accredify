@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import UserDocumentList from '@/components/UserDocumentList.vue'
+import UserDocumentList from '@/views/user/UserDocumentList.vue'
 
 
 describe('UserDocumentList', () => {

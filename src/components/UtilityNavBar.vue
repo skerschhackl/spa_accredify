@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import IconBell from './icons/IconBell.vue';
-  import IconChevron from './icons/IconChevron.vue';
+  import IconBell from '@/components/icons/IconBell.vue';
+  import IconChevron from '@/components/icons/IconChevron.vue';
   import { getInitials } from '@/utils/userUtils.js';
   
   defineProps<{

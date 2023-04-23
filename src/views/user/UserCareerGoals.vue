@@ -1,13 +1,12 @@
 <script setup lang="ts">
   import { watchEffect, ref, computed } from 'vue';
-
   import CareerGoal from '@/types/CareerGoal';
   import { urlCareerGoalData } from '@/components/constants/urlConstants';
   import { getJSON } from '@/utils/requestUtils';
-
   import LoadingSpinner from '@/components/widgets/LoadingSpinner.vue';
   import Notification from '@/components/widgets/Notification.vue';
 
+  // define colors for donut
   const colorDonutForeground = '#E8E9EB';
   const colorDonutSection = '#493DF5';
 

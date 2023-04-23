@@ -1,13 +1,11 @@
 <script setup lang="ts">
   import { watchEffect, ref } from 'vue';
-  
   import Document from '@/types/Document';
   import { urlDocumentData } from '@/components/constants/urlConstants';
   import { getJSON } from '@/utils/requestUtils';
   import { formatDate } from '@/utils/dateUtils';
-
-  import IconFile from './icons/IconFile.vue';
-  import IconKebab from './icons/IconKebab.vue';
+  import IconFile from '@/components/icons/IconFile.vue';
+  import IconKebab from '@/components/icons/IconKebab.vue';
   import LoadingSpinner from '@/components/widgets/LoadingSpinner.vue';
   import Notification from '@/components/widgets/Notification.vue';
 
