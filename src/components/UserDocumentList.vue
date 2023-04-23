@@ -1,47 +1,63 @@
 <script setup lang="ts">
   import { watchEffect, ref } from 'vue';
   
-  import IconFile from './icons/IconFile.vue';
-  import IconKebab from './icons/IconKebab.vue';
   import Document from '@/types/Document';
   import { urlDocumentData } from '@/components/constants/urlConstants';
   import { getJSON } from '@/utils/requestUtils';
   import { formatDate } from '@/utils/dateUtils';
 
+  import IconFile from './icons/IconFile.vue';
+  import IconKebab from './icons/IconKebab.vue';
+  import LoadingSpinner from '@/components/widgets/LoadingSpinner.vue';
+  import Notification from '@/components/widgets/Notification.vue';
+
   const documents = ref(new Document);
+  const hasData = ref(false);
 
   const error = ref('');
+  const isLoading = ref(false);
 
   watchEffect(async (newDoc) => {
     if (newDoc.length > 0) {
+      isLoading.value = true;
       try {
         const response = await getJSON(urlDocumentData);
         documents.value.populateFromJSON(response);
+        hasData.value = !!documents.value.data || false;
       } catch (e) {
         error.value = 'We are sorry - there was an error loading your document data.'
       }
     }
+    isLoading.value = false;
   });
 </script>
 
 <template>
-  <div class="document">{{ documents.data }}
+  <div class="document">
     <div class="document--header">
       <h4>Recent Documents</h4>
       <div class="document--view-all">View All Documents</div>
     </div>
-    
-    <div class="document-list">
+    <div v-if="isLoading">
+    <LoadingSpinner />
+    </div>
+    <div v-else-if="hasData && !error" class="document-list">
       <div class="document-list--row document-list--header">
         <div class="document-list--header document-list--header--document-name">Document Name</div>
         <div class="document-list--header document-list--header--date">Received On</div>
       </div>
-      <div v-if="documents.data" v-for="d in documents.data.data" :key="d.id" class="document-list--row">
+      <div v-for="d in documents.data!.data" :key="d['id']" class="document-list--row">
         <IconFile class="document-list--file-icon" />
-        <div class="document-list--document-name">{{ d.document_name }}</div>
-        <div class="document-list--date">{{ formatDate(d.received_on) }}</div>
+        <div class="document-list--document-name">{{ d['document_name'] }}</div>
+        <div class="document-list--date">{{ formatDate(d['received_on']) }}</div>
         <IconKebab class="document-list--kebab-icon" />
       </div>
+    </div>
+    <div v-else-if="error" class="document-list">
+      <Notification :msg="error"/>
+    </div>
+    <div v-else class="document-list">
+      <div class="document-list--error">Nothing here yet</div>
     </div>
   </div>
 </template>
@@ -104,5 +120,11 @@
     color: var(--color-text-light);
     margin-left: 32px;
     min-width: 24px;
+  }
+  .document-list--error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
 </style>

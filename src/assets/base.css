@@ -1,5 +1,6 @@
 /* color palette from https://www.figma.com/file/TWPPyCgNpT1Dac1HP5bHIA/Technical-Assessment---Accredify-Senior-FE?node-id=9-1596&t=s4BeTCv8ThU2z0AD-0 */
 :root {
+  --primary-p30: #b6b1fb;
   --primary-p50: #493DF5;
   --primary-p70: #2B22B5;
 
@@ -9,6 +10,9 @@
   --neutral-n60: #5B6270;
   --neutral-n80: #151F32;
   --neutral-n95: #000000;
+
+  --error-e70: #cc0000;
+  --error-e30: #ffb3b3;
 }
 
 /* semantic color variables for this project */
@@ -30,6 +34,10 @@
   --color-background-user-initials: var(--primary-p50);
   --color-user-initials: var(--neutral-n05);
   --color-donut-text: var(--primary-p70);
+
+  --color-loading-spinner: var(--primary-p70);
+  --color-border-notification-error: var(--error-e30);
+  --color-text-notification-error: var(--error-e70);
 
   --width-nav-bar: 60px;
   --border-radius-small: 6px;
