@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import BaseError from '@/utils/BaseError';
+import BaseError from '@/utils/errorUtils/BaseError';
 
 describe('BaseError', () => {
   it('should be a subclass of Error', () => {

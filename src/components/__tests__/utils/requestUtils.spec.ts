@@ -1,8 +1,8 @@
 import { describe, it, expect, vi , afterEach} from 'vitest';
 
 import { getJSON, asyncRequest, catchHTTPError } from '@/utils/requestUtils';
-import BaseError from '@/utils/BaseError';
-import HttpError from '@/utils/HttpError';
+import BaseError from '@/utils/errorUtils/BaseError';
+import HttpError from '@/utils/errorUtils/HttpError';
 
 describe('requestUtils', () => {
 

@@ -1,5 +1,5 @@
 import Ajv from "ajv";
-import ValidateError from "../../utils/ValidateError";
+import ValidateError from "@/utils/errorUtils/ValidateError";
 import type { JTDDataType } from "ajv/dist/types/jtd-schema";
 
 export class JsonValidator {

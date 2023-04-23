@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 
 import { JsonValidator } from "@/types/validator/JsonValidator";
-import ValidateError from "@/utils/ValidateError";
+import ValidateError from "@/utils/errorUtils/ValidateError";
 
 describe("JsonValidator", () => {
   let validator: JsonValidator;

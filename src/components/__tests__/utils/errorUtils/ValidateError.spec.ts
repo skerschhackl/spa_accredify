@@ -1,7 +1,7 @@
 import { describe, it, test, expect } from 'vitest';
 
-import ValidateError from '@/utils/ValidateError';
-import BaseError from '@/utils/BaseError';
+import ValidateError from '@/utils/errorUtils/ValidateError';
+import BaseError from '@/utils/errorUtils/BaseError';
 
 describe('ValidateError', () => {
   it('should be a subclass of BaseError', () => {

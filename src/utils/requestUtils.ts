@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
-import BaseError from './BaseError';
-import HttpError from './HttpError';
+import BaseError from './errorUtils/BaseError';
+import HttpError from './errorUtils/HttpError';
 
 export const catchHTTPError = async (res: Response) => {
   if (res.status >= 400) {
