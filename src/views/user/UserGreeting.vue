@@ -1,6 +1,6 @@
 <script setup lang="ts">
   defineProps<{
-    name: string | undefined,
+    name: string,
     isPersonal: boolean
   }>()
 </script>

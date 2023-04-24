@@ -11,27 +11,35 @@
   const colorDonutSection = '#493DF5';
 
   const latestCareerGoal = ref(new CareerGoal);
+  const hasData = ref(false);
   const error = ref('');
   const isLoading = ref(false);
   
-  watchEffect(async (newGoal) => {
-    if (newGoal.length > 0) {
-      isLoading.value = true;
+  const loadData = async () => {
+    isLoading.value = true;
       try {
         const response = await getJSON(urlCareerGoalData);
         // there can be multiple goals for a user but we only want to show the lastest / newest
         const maxId = Math.max.apply(null, response.data.map((item: { id: any; }) => item.id));
         const latest = response.data.find( (item: { id: number; }) => {return item.id === maxId})
         latestCareerGoal.value.populateFromJSON(latest);
+        hasData.value = !!latestCareerGoal.value.data || false;
       } catch (e) {
         error.value = 'We are sorry - there was an error loading your career goal data.'
       }
+  }
+
+  watchEffect(async (newGoal) => {
+    if (newGoal.length > 0) {
+      await loadData()
     }
     isLoading.value = false;
   });
 
   const getProgress = computed(() => latestCareerGoal.value.data.progress || 0)
 
+  // make refs visible for tests
+  defineExpose({ latestCareerGoal, hasData, error, isLoading, getProgress });
 </script>
 
 <template>
@@ -40,11 +48,13 @@
     <div v-if="isLoading">
       <LoadingSpinner />
     </div>
+
     <div v-else class="career-goal--wrapper">
-      <div v-if="error" class="career-goal">
+      <div v-if="error !== ''" class="career-goal">
         <Notification :msg="error"/>
       </div>
-      <template v-else>
+
+      <template v-if="hasData">
         <div class="career-goal--header">Your Progress</div>
         <div class="career-goal--donut">
           <vc-donut 
@@ -55,9 +65,12 @@
             ><div class="career-goal--donut-text">{{ getProgress }}%</div></vc-donut>
         </div>
         <div>I want to become a</div>
-        <h4>{{ latestCareerGoal.data.name }}</h4>
+        <h4 class="career-goal--name">{{ latestCareerGoal.data.name }}</h4>
 
         <div class="career-goal--link">View Insights</div>
+      </template>
+      <template v-else >
+        <div class="career-goal--error">Nothing here yet</div>
       </template>
     </div>
   </div>
@@ -98,39 +111,10 @@
     color: var(--color-background-user-initials);
     font-weight: var(--font-weight-bold);
   }
-  
-  
-  .document-list--row {
+  .career-goal--error {
     display: flex;
-    border-bottom: 1px solid var(--color-border);
-    padding: 20px;
     align-items: center;
-  }
-  
-  .document-list--header {
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-light);
-  }
-
-  .document-list--header--date {
-    margin-left: auto;
-    margin-right: 56px;
-  }
-
-  .document-list--document-name {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .document-list--date {
-    margin-left: auto;
-  }
-  .document-list--file-icon {
-    margin-right: 20px;
-    color: var(--color-background-user-initials);
-  }
-  .document-list--kebab-icon {
-    color: var(--color-text-light);
-    margin-left: 32px;
-    min-width: 24px;
+    justify-content: center;
+    padding: 20px;
   }
 </style>

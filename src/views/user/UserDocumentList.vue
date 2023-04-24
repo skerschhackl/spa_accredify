@@ -11,13 +11,11 @@
 
   const documents = ref(new Document);
   const hasData = ref(false);
-
   const error = ref('');
   const isLoading = ref(false);
 
-  watchEffect(async (newDoc) => {
-    if (newDoc.length > 0) {
-      isLoading.value = true;
+  const loadData = async () => {
+    isLoading.value = true;
       try {
         const response = await getJSON(urlDocumentData);
         documents.value.populateFromJSON(response);
@@ -25,9 +23,18 @@
       } catch (e) {
         error.value = 'We are sorry - there was an error loading your document data.'
       }
+  }
+
+  watchEffect(async (newDoc) => {
+    if (newDoc.length > 0) {
+      await loadData();
     }
     isLoading.value = false;
   });
+
+  // make refs visible for tests
+  defineExpose({ documents, hasData, error, isLoading });
+  
 </script>
 
 <template>
@@ -36,24 +43,28 @@
       <h4>Recent Documents</h4>
       <div class="document--view-all">View All Documents</div>
     </div>
+
     <div v-if="isLoading">
-    <LoadingSpinner />
+      <LoadingSpinner />
     </div>
-    <div v-else-if="hasData && !error" class="document-list">
+
+    <div v-if="error !== ''" class="document-list">
+      <Notification :msg="error"/>
+    </div>
+    
+    <div v-if="hasData" class="document-list">
       <div class="document-list--row document-list--header">
         <div class="document-list--header document-list--header--document-name">Document Name</div>
         <div class="document-list--header document-list--header--date">Received On</div>
       </div>
-      <div v-for="d in documents.data!.data" :key="d['id']" class="document-list--row">
+      <div v-for="d in documents.data.data" :key="d['id']" class="document-list--row">
         <IconFile class="document-list--file-icon" />
         <div class="document-list--document-name">{{ d['document_name'] }}</div>
         <div class="document-list--date">{{ formatDate(d['received_on']) }}</div>
         <IconKebab class="document-list--kebab-icon" />
       </div>
     </div>
-    <div v-else-if="error" class="document-list">
-      <Notification :msg="error"/>
-    </div>
+
     <div v-else class="document-list">
       <div class="document-list--error">Nothing here yet</div>
     </div>

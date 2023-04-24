@@ -4,7 +4,7 @@
   import UserCareerGoals from '@/views/user/UserCareerGoals.vue';
   
   export interface Props {
-    name?: string | undefined
+    name?: string
     isPersonal?: boolean
   }
 
