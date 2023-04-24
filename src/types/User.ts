@@ -22,10 +22,14 @@ const schema = {
   }
 } as const
 
+export type UserData = JTDDataType<typeof schema>
+
+
 export default class User extends Validateable {  
-  data: JTDDataType<typeof schema> | undefined;
+  data: UserData;
   constructor() {
     super(schema)
+    this.data = {} as UserData
   }
 
   populateFromJSON(param: any): void {

@@ -59,10 +59,14 @@ const schema = {
   }
 } as const
 
+export type DocumentData = JTDDataType<typeof schema>
+
+
 export default class Document extends Validateable {  
-  data: JTDDataType<typeof schema> | undefined;
+  data: DocumentData;
   constructor() {
     super(schema)
+    this.data = {} as DocumentData
   }
 
   populateFromJSON(param: any): void {
