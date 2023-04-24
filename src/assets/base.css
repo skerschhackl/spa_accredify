@@ -39,6 +39,10 @@
   --color-border-notification-error: var(--error-e30);
   --color-text-notification-error: var(--error-e70);
 
+  --color-button-border: var(--primary-p50);
+  --color-button-text: var(--primary-p50);
+  --color-button-text-hover: var(--primary-p30);
+
   --width-nav-bar: 60px;
   --border-radius-small: 6px;
   --border-radius-large: 15px;

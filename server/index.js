@@ -3,6 +3,7 @@ import path from "path";
 import homepageRouter from "./homepageRouter.js";
 import assetsRouter from "./assetsRouter.js";
 import UserData from "./exampleResponse/UserData.json" assert {type: 'json'};
+import UserDataManaged from "./exampleResponse/UserDataManaged.json" assert {type: 'json'};
 import DocumentData from "./exampleResponse/DocumentData.json" assert {type: 'json'};
 import CareerGoalData from "./exampleResponse/CareerGoalData.json" assert {type: 'json'};
 
@@ -12,12 +13,12 @@ const distPath = path.join(path.resolve(), "dist");
 
 const app = express();
 
-app.get("/api/v1/hello", (_req, res) => {
-  res.json({ message: "Hello, world!" });
-});
-
 app.get("/api/v1/user", (_req, res) => {
   res.json(UserData);
+});
+// for testing purposes, a managed user was included here
+app.get("/api/v1/usermanaged", (_req, res) => {
+  res.json(UserDataManaged);
 });
 
 app.get("/api/v1/document", (_req, res) => {
