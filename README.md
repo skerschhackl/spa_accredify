@@ -1,51 +1,52 @@
-# spa-accredify
+# SPA Accredify
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This is a single page application (SPA) built with Vue 3 and TypeScript where users can view their documents on the home page. Managed users are able to see an additional "Career Goal" section on the home page.
 
 ## Project Setup
 
-```sh
-npm install
-```
+1. Clone this repository: `git clone https://github.com/skerschhackl/spa_accredify.git`
+2. Navigate to the project directory: `cd <your-repo-name>`
+3. Install dependencies: `npm install`
 
 ### Compile and Hot-Reload for Development
+
+To start the development server, you can run the following command:
 
 ```sh
 npm run dev
 ```
 
+This will start the development server at `http://localhost:3000`, and it will watch for changes in the `src` folder and trigger a rebuild automatically.
+
 ### Type-Check, Compile and Minify for Production
+
+To build the project for production, you can run the following command:
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+This will compile the TypeScript code, bundle the JavaScript and CSS files, and generate the static files in the `dist` folder.
+
+### Testing
+
+This project comes with pre-configured unit and end-to-end testing environments. You can run the unit tests with the following command:
+
+#### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+You can run the unit tests with the following command:
 
 ```sh
 npm run test:unit
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+#### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+
+You can run the end-to-end tests with the following commands in two separate terminal windows:
+
+```sh
+npm run dev
+```
 
 ```sh
 npm run test:e2e:dev
@@ -56,12 +57,20 @@ It is much faster than the production build.
 
 But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
 
+You can run the end-to-end tests with the following commands:
+
 ```sh
 npm run build
+npm run preview
+```
+
+```sh
 npm run test:e2e
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Linting with [ESLint](https://eslint.org/)
+
+This project uses ESLint to enforce a consistent code style. You can run the linter with the following command:
 
 ```sh
 npm run lint
