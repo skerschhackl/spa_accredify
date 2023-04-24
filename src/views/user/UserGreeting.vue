@@ -24,6 +24,7 @@
     margin-bottom: 56px;
   }
   .greeting--headline {
+    /* font is not free, need to be updated */
     /* font-family: 'Pulp Display', sans-serif; */
     font-size: var(--font-size-h2);
     font-weight: var(--font-weight-bold);

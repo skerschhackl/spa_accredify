@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div v-else class="document-list">
+    <div v-if="!hasData" class="document-list">
       <div class="document-list--error">Nothing here yet</div>
     </div>
   </div>
@@ -78,6 +78,7 @@
   .document--header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   .document--view-all {
     margin-left: auto;

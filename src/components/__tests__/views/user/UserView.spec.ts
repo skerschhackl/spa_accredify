@@ -1,4 +1,4 @@
-import { describe, it, test, expect, vi } from 'vitest'
+import { describe, it, test, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 import UserView from '@/views/user/UserView.vue';
