@@ -8,6 +8,16 @@ This is a single page application (SPA) built with Vue 3 and TypeScript where us
 2. Navigate to the project directory: `cd <your-repo-name>`
 3. Install dependencies: `npm install`
 
+### Docs with [Sphinx](https://www.sphinx-doc.org/en/master/)
+
+This project comes with a pre-configured Sphinx documentation environment. You can generate the documentation with the following command:
+
+```sh
+cd .docs
+make html
+```
+The generated documentation will be available in the `docs/documentation` folder.
+
 ### Compile and Hot-Reload for Development
 
 To start the development server, you can run the following command:
@@ -75,13 +85,3 @@ This project uses ESLint to enforce a consistent code style. You can run the lin
 ```sh
 npm run lint
 ```
-
-### Docs with [Sphinx](https://www.sphinx-doc.org/en/master/)
-
-This project comes with a pre-configured Sphinx documentation environment. You can generate the documentation with the following command:
-
-```sh
-cd .docs
-make html
-```
-The generated documentation will be available in the `docs/documentation` folder.
