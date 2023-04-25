@@ -44,6 +44,9 @@
 <template>
   <NavBar />
   <main class="page-wrapper">
+    <!-- this button was added to make it easy to switch between managed and personal user -->
+    <!-- ideally it should be its own component -->
+    <!-- it will be removed, once the api is served via the backend -->
     <div class="switch-user--wrapper">
       <button @click="changeUser" class="switch-user--button">
         Show
@@ -51,7 +54,8 @@
         <template v-else> Personal </template>
         User
       </button>
-      </div>
+    </div>
+    <!-- end switch button -->
     <div v-if="isLoading">
       <LoadingSpinner />
     </div>
@@ -73,6 +77,15 @@
 </template>
 
 <style scoped>
+  .page-wrapper {
+    background-color: var(--color-background-page);
+    min-height: 100vh;
+    min-width: calc(100% - var(--width-nav-bar));
+    border-top-left-radius: var(--border-radius-large);
+  }
+  .page-content {
+    margin: 48px 144px; 
+  }
   .notification--wrapper {
     margin-bottom: 2rem; 
   }  

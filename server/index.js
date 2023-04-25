@@ -16,7 +16,7 @@ const app = express();
 app.get("/api/v1/user", (_req, res) => {
   res.json(UserData);
 });
-// for testing purposes, a managed user was included here
+// a managed user was included here for testing purposes 
 app.get("/api/v1/usermanaged", (_req, res) => {
   res.json(UserDataManaged);
 });

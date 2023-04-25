@@ -18,3 +18,37 @@
     <div class="nav-bar nav-bar--icon nav-bar--settings"><IconCog /></div>
   </nav>
 </template>
+
+<style scoped >
+.nav-bar {
+  width: var(--width-nav-bar);
+  color: var(--color-nav-bar-icon-disabled);
+}
+
+.nav-bar a {
+  color: var(--color-nav-bar-icon);
+  transition: 0.4s;
+}
+
+.nav-bar a:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+}
+
+.nav-bar--icon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.nav-bar--logo {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-bar--icon:first-of-type {
+  margin: 8px 0 28px;
+}
+</style>
