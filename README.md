@@ -75,3 +75,13 @@ This project uses ESLint to enforce a consistent code style. You can run the lin
 ```sh
 npm run lint
 ```
+
+### Docs with [Sphinx](https://www.sphinx-doc.org/en/master/)
+
+This project comes with a pre-configured Sphinx documentation environment. You can generate the documentation with the following command:
+
+```sh
+cd .docs
+make html
+```
+The generated documentation will be available in the `docs/documentation` folder.
