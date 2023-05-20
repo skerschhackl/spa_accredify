@@ -4,7 +4,7 @@ This is a single page application (SPA) built with Vue 3 and TypeScript where us
 
 ## Project Setup
 
-1. Clone this repository: `git clone https://github.com/skerschhackl/spa_accredify.git`
+1. Clone this repository: `git clone https://github.com/skerschhackl/spa_vue_typescript.git`
 2. Navigate to the project directory: `cd <your-repo-name>`
 3. Install dependencies: `npm install`
 
